@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gestor de Stock</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Gestor de Stock</h1>
+
+    <div class="formulario">
+      <input type="text" id="nombre" placeholder="Nombre del artículo" />
+      <input type="text" id="precio" placeholder="Precio del Producto" />
+      <input
+        type="text"
+        id="descripcion"
+        placeholder="Descripción del artículo"
+      />
+      <input type="text" id="cantidad" placeholder="Cantidad" />
+      <input type="text" id="url" placeholder="Url de imagen" />
+      <button id="agregar">Agregar</button>
+    </div>
+
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>url</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-cuerpo"></tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
