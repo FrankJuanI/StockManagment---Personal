@@ -22,3 +22,6 @@ En la primer etapa de la aplicacion se desarrollara:
 
 --> Se buscara la mejor experiencia de usuario
 
+
+
+ID - Nombre - Precio - Descripcion - Cantidad - url_img 
