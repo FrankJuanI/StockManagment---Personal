@@ -22,27 +22,37 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    async (serverUrl) => {
-      console.log(serverUrl);
+    const pepitochupapito = async (
+      serverUrl,
+      nombre,
+      precio,
+      descripcion,
+      cantidad,
+      url
+    ) => {
+      console.log("a");
       try {
-        await fetch(`${serverUrl}/items`, {
+        const res = await fetch(`localhost:3000/items`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            nombre,
-            precio,
-            descripcion,
-            cantidad,
-            url,
-          }),
         });
-        cargarDatos();
+
+        const data = JSON.stringify({
+          nombre,
+          precio,
+          descripcion,
+          cantidad,
+          url,
+        });
+        console.log(data);
+        body: data;
       } catch (error) {
         console.log(error);
       }
     };
+    pepitochupapito();
   });
 
   function cargarDatos() {
