@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async (serverUrl) => {
       try {
-        const response = await fetch(`${serverUrl}/items`, {
+        await fetch(`${serverUrl}/items`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: await JSON.stringify({
+          body: JSON.stringify({
             nombre,
             precio,
             descripcion,
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  function cargarDatos() {
+  async function cargarDatos() {
     fetch(`${serverUrl}/items`)
       .then((response) => {
         if (!response.ok) {
