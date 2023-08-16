@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async (serverUrl) => {
-      console.log("God");
+      console.log(serverUrl);
       try {
         await fetch(`${serverUrl}/items`, {
           method: "POST",
@@ -38,37 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
             url,
           }),
         });
+        cargarDatos();
       } catch (error) {
         console.log(error);
       }
     };
   });
+});
 
-  async function cargarDatos() {
-    fetch(`${serverUrl}/items`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("No se pudieron obtener los datos.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        tablaCuerpo.innerHTML = "";
+function cargarDatos() {
+  fetch(`${serverUrl}/items`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("No se pudieron obtener los datos.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      tablaCuerpo.innerHTML = "";
 
-        data.forEach((item) => {
-          const fila = document.createElement("tr");
-          fila.innerHTML = `
+      data.forEach((item) => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
                     <td>${item.id}</td>
                     <td>${item.nombre}</td>
                     <td>${item.precio}</td>
                     <td>${item.descripcion}</td>
                     <td>${item.url}</td>
                 `;
-          tablaCuerpo.appendChild(fila);
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+        tablaCuerpo.appendChild(fila);
       });
-  }
-});
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
