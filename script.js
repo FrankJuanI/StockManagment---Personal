@@ -22,40 +22,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const pepitochupapito = async (
-      serverUrl,
-      nombre,
-      precio,
-      descripcion,
-      cantidad,
-      url
-    ) => {
-      console.log("a");
-      try {
-        const res = await fetch(`localhost:3000/items`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        const data = JSON.stringify({
-          nombre,
-          precio,
-          descripcion,
-          cantidad,
-          url,
-        });
-        console.log(data);
-        body: data;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    pepitochupapito();
+    try {
+      fetch(`${serverUrl}/items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nombre, precio, descripcion, cantidad, url }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   function cargarDatos() {
+    try {
+    } catch (error) {}
     fetch(`${serverUrl}/items`)
       .then((response) => {
         if (!response.ok) {
@@ -63,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return response.json();
       })
+
       .then((data) => {
         tablaCuerpo.innerHTML = "";
 
