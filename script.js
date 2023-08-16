@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async (serverUrl) => {
+      console.log("God");
       try {
         await fetch(`${serverUrl}/items`, {
           method: "POST",
