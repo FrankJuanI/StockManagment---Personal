@@ -20,8 +20,6 @@ app.get("/items", (req, res) => {
   });
 });
 
-slkdslkdlskd;
-
 app.post("/items", (req, res) => {
   const { nombre, precio, descripcion, cantidad, url } = req.body;
 

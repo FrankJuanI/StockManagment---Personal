@@ -22,30 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    fetch(`${serverUrl}/items`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ nombre, precio, descripcion, cantidad, url }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("No se pudo agregar el artículo.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        nombreInput.value = "";
-        precioInput.value = "";
-        descripcionInput.value = "";
-        cantidadInput.value = "";
-        urlInput.value = "";
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    async (serverUrl) => {
+      try {
+        const response = await fetch(`${serverUrl}/items`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: await JSON.stringify({
+            nombre,
+            precio,
+            descripcion,
+            cantidad,
+            url,
+          }),
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
   });
 
   function cargarDatos() {
