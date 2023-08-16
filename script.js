@@ -44,32 +44,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   });
-});
 
-function cargarDatos() {
-  fetch(`${serverUrl}/items`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("No se pudieron obtener los datos.");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      tablaCuerpo.innerHTML = "";
+  function cargarDatos() {
+    fetch(`${serverUrl}/items`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("No se pudieron obtener los datos.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        tablaCuerpo.innerHTML = "";
 
-      data.forEach((item) => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
+        data.forEach((item) => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
                     <td>${item.id}</td>
                     <td>${item.nombre}</td>
                     <td>${item.precio}</td>
                     <td>${item.descripcion}</td>
                     <td>${item.url}</td>
                 `;
-        tablaCuerpo.appendChild(fila);
+          tablaCuerpo.appendChild(fila);
+        });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
+  }
+});
